@@ -5,6 +5,7 @@ author        = "Dmitry Matveyev"
 description   = "A game about the purpose of death and undeath"
 license       = "MIT"
 srcDir        = "src"
+binDir        = "js"
 bin           = @["undarkness.js"]
 
 backend       = "js"
