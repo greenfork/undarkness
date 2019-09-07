@@ -1,14 +1,16 @@
 include karax / prelude
 
-proc question*(title: kstring): VNode =
+proc renderQuestion*(title: kstring): VNode =
   result = buildHtml(h1(class="title has-text-centered")):
     text title
 
-proc choices*(buttons: openArray[kstring]): VNode =
+type Choice* = object
+  title*, path*: kstring
+proc renderChoices*(choices: openArray[Choice]): VNode =
   result = buildHtml(tdiv(class="buttons are-medium is-centered")):
-    for btn in buttons:
-      button(class="button is-primary is-outlined"):
-        text btn
+    for chs in choices:
+      a(class="button is-primary is-outlined", href=chs.path):
+        text chs.title
 
 template withLayout*(content: untyped) =
   result = buildHtml(tdiv(class="hero is-dark is-fullheight")):
