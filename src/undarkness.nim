@@ -2,15 +2,13 @@ include karax / prelude
 
 var lines: seq[kstring] = @[]
 
+proc question(title: kstring): VNode =
+  result = buildHtml(h1):
+    text title
+
 proc createDom(): VNode =
   result = buildHtml(tdiv):
-    button:
-      text "Say hello!"
-      proc onclick(ev: Event; n: VNode) =
-        lines.add "Hello simulated universe"
-    for x in lines:
-      tdiv:
-        text x
+    question("What am I doing?")
 
 when isMainModule:
   proc main() =
