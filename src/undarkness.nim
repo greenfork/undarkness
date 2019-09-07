@@ -1,5 +1,4 @@
-# import karax / prelude
-import karax / [kbase, vdom, kdom, vstyles, karax, karaxdsl, jdict, jstrutils, jjson]
+include karax / prelude
 
 var lines: seq[kstring] = @[]
 
