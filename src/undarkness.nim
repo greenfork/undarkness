@@ -1,5 +1,20 @@
-# This is just an example to get you started. A typical binary package
-# uses this file as the main entry point of the application.
+# import karax / prelude
+import karax / [kbase, vdom, kdom, vstyles, karax, karaxdsl, jdict, jstrutils, jjson]
+
+var lines: seq[kstring] = @[]
+
+proc createDom(): VNode =
+  result = buildHtml(tdiv):
+    button:
+      text "Say hello!"
+      proc onclick(ev: Event; n: VNode) =
+        lines.add "Hello simulated universe"
+    for x in lines:
+      tdiv:
+        text x
 
 when isMainModule:
-  echo("Hello, undarkness...")
+  proc main() =
+    setRenderer createDom
+
+  main()
