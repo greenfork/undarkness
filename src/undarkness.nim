@@ -1,8 +1,8 @@
 include karax / prelude
-from rendering import createDom
+from logic import createDom
 
 when isMainModule:
   proc main() =
-    setRenderer createDom
+    setRenderer(createDom)
 
   main()
