@@ -1,0 +1,28 @@
+{
+    "welcome": {
+        "title": "What is your purpose?",
+        "choices": [
+            {
+                "response": "I'm here to kill you",
+                "path": "killing"
+            },
+            {
+                "response": "I'm afraid",
+                "path": "afraid"
+            }
+        ]
+    },
+    "killing": {
+        "title": "How bad do you want it?",
+        "choices": [
+            {
+                "response": "Real bad",
+                "path": "cruelty"
+            },
+            {
+                "response": "Ha-ha, I was just joking",
+                "path": "pretending"
+            }
+        ]
+    }
+}

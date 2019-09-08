@@ -1,32 +1,36 @@
-import tables, strutils
+import tables
+from os import `/`
+import json as json
 
 include karax / prelude
+
 import rendering
 
 type
   QuestionScreen = object
-    title*: kstring
+    title*: string
     choices*: seq[Choice]
 
 const
-  questionScreens = {
-    "welcome": QuestionScreen(
-        title: "What is your purpose?",
-        choices: @[Choice(title: kstring"I'm here to kill you", path: kstring"killing"),
-                   Choice(title: kstring"I'm aftaid", path: kstring"afraid")]
-      ),
-    "killing": QuestionScreen(
-        title: "How bad do you want it?",
-        choices: @[Choice(title: kstring"Real bad", path: kstring"cruelty"),
-                   Choice(title: kstring"Ha-ha, I was just joking", path: kstring"joking")]
-      )
-  }.to_table
-  initScreen = questionScreens["welcome"]
+  textsPath = ".." / "gamedata" / "texts"
+  questionJsonData = slurp(textsPath / "questions.json")
+
+var
+  questionJson: JsonNode
+  questionScreens = initTable[string, QuestionScreen]()
+  defaultScreen: QuestionScreen
+
+proc initLogic* =
+  questionJson = json.parseJson(questionJsonData)
+  echo questionJson
+  for key, screen in questionJson.pairs:
+    questionScreens[key] = json.to(screen, QuestionScreen)
+  defaultScreen = questionScreens["welcome"]
 
 proc createDom*(rd: RouterData): VNode =
-  let key = if rd.hashPart == "": "welcome"
-            else: ($rd.hashPart)[1..<len(rd.hashPart)]
-  let screen = questionScreens.getOrDefault(key, initScreen)
+  let key = if rd.hashPart != "": ($rd.hashPart)[1..<len(rd.hashPart)]
+            else: ""
+  let screen = questionScreens.getOrDefault(key, defaultScreen)
   withLayout:
     renderQuestion(screen.title)
     renderChoices(screen.choices)
