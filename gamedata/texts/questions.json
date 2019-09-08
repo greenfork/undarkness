@@ -1,41 +1,558 @@
 {
-    "welcome": {
-        "title": "What is your purpose?",
-        "choices": [
-            {
-                "response": "I'm here to kill you",
-                "path": "killing"
-            },
-            {
-                "response": "I'm afraid",
-                "path": "afraid"
-            }
-        ]
-    },
-    "killing": {
-        "title": "How bad do you want to kill me?",
-        "choices": [
-            {
-                "response": "Real bad",
-                "path": "cruelty"
-            },
-            {
-                "response": "Ha-ha, I was just joking",
-                "path": "pretending"
-            }
-        ]
-    },
-    "pretending": {
-        "title": "Were you really joking?",
-        "choices": [
-            {
-                "response": "Yes",
-                "path": "pussy"
-            },
-            {
-                "response": "No, actually I want to kill you",
-                "path": "cruelty"
-            }
-        ]
-    }
+	"afraid": {
+		"choices": [
+			{
+				"path": "dont-be-afraid",
+				"response": "I'm afraid I might want to kill you"
+			},
+			{
+				"path": "dont-be-afraid",
+				"response": "It's just scaring me"
+			}
+		],
+		"title": "What are you afraid of?"
+	},
+	"almost-lost": {
+		"choices": [
+			{
+				"path": "remorse",
+				"response": "Hey, I'm sorry"
+			},
+			{
+				"path": "lost",
+				"response": "F* you!"
+			}
+		],
+		"title": "Alright. No game. Okay."
+	},
+	"am-right": {
+		"choices": [
+			{
+				"path": "want-to-play",
+				"response": "So.. are we playing the game?"
+			}
+		],
+		"title": "Yes, thank you"
+	},
+	"anhedonia": {
+		"choices": [
+			{
+				"path": "happy-game",
+				"response": "Okay..."
+			},
+			{
+				"path": "reject-playing",
+				"response": "No, I'm not playing!"
+			}
+		],
+		"title": "Please, press \"Okay\" to play the game."
+	},
+	"another-game": {
+		"choices": [
+			{
+				"path": "sad-game",
+				"response": "Okay, let's play another game"
+			},
+			{
+				"path": "sad-game-desc",
+				"response": "What's another game?"
+			}
+		],
+		"title": "How about another game?"
+	},
+	"black-door1": {
+		"choices": [
+			{
+				"path": "black-door2",
+				"response": "Silence, my brother"
+			},
+			{
+				"path": "black-door2",
+				"response": "K-pop?"
+			},
+			{
+				"path": "black-door2",
+				"response": "Maybe classical music?"
+			}
+		],
+		"title": "What is the music of life?"
+	},
+	"black-door2": {
+		"choices": [
+			{
+				"path": "black-door3",
+				"response": "Solace, my brother"
+			},
+			{
+				"path": "black-door3",
+				"response": "Wait, what?"
+			},
+			{
+				"path": "black-door3",
+				"response": "I don't like it"
+			}
+		],
+		"title": "What is the gift of death?"
+	},
+	"black-door3": {
+		"choices": [
+			{
+				"path": "black-door4",
+				"response": "Sanguine, my broher"
+			},
+			{
+				"path": "black-door4",
+				"response": "Like, black?"
+			},
+			{
+				"path": "black-door5",
+				"response": "Why would you ask that?"
+			}
+		],
+		"title": "What is the color of night?"
+	},
+	"black-door4": {
+		"choices": [
+			{
+				"path": "black-door5",
+				"response": "Sublime, my brother"
+			},
+			{
+				"path": "black-door5",
+				"response": "Salty?"
+			},
+			{
+				"path": "black-door5",
+				"response": "Spiders?"
+			}
+		],
+		"title": "What is the flavor of fear?"
+	},
+	"black-door5": {
+		"choices": [
+			{
+				"path": "door-test-passed",
+				"response": "Innocence, my brother"
+			},
+			{
+				"path": "door-test-passed",
+				"response": "My self-esteem?"
+			},
+			{
+				"path": "door-test-passed",
+				"response": "Our ability to control the world"
+			}
+		],
+		"title": "What is life's greatest illusion?"
+	},
+	"confused": {
+		"choices": [
+			{
+				"path": "cruelty",
+				"response": "I'm here to do just one thing - make sure you are dead"
+			},
+			{
+				"path": "confused-more",
+				"response": "What are you talking about?"
+			}
+		],
+		"title": "(just do the role-playing as we agreed) So, why are you here?"
+	},
+	"confused-more": {
+		"choices": [
+			{
+				"path": "questionable-agreeing",
+				"response": "Oh no, no, now I remember"
+			},
+			{
+				"path": "in-the-wrong-place",
+				"response": "No! What is this?"
+			}
+		],
+		"title": "Wait, didn't we talk before?"
+	},
+	"cruelty": {
+		"choices": [],
+		"title": "Cruelty path"
+	},
+	"cucumber-or-tomatoe": {
+		"choices": [
+			{
+				"path": "red-or-yellow",
+				"response": "Cucumber"
+			},
+			{
+				"path": "red-or-yellow",
+				"response": "Tomatoe"
+			}
+		],
+		"title": "Cucumber or tomatoe?"
+	},
+	"daring": {
+		"choices": [
+			{
+				"path": "self-confident",
+				"response": "Self-confident"
+			},
+			{
+				"path": "presumptuous",
+				"response": "Presumptuous"
+			}
+		],
+		"title": "Self-confident or presumptuous?"
+	},
+	"difference-desc": {
+		"choices": [
+			{
+				"path": "sad-game",
+				"response": "I hope so, let's go"
+			},
+			{
+				"path": "irritative-asking",
+				"response": "Is it so hard to tell me how it is different?"
+			}
+		],
+		"title": "It is like.. very different, substantially different"
+	},
+	"disclosure": {
+		"choices": [],
+		"title": "Disclosure"
+	},
+	"dont-be-afraid": {
+		"choices": [
+			{
+				"path": "happy-game",
+				"response": "Yes, I like games!"
+			},
+			{
+				"path": "anhedonia",
+				"response": "No, I don't want to play"
+			}
+		],
+		"title": "Don't be afraid. Let's play a game!"
+	},
+	"door-test-passed": {
+		"choices": [],
+		"title": "Summary of door test"
+	},
+	"gabriela-order": {
+		"choices": [
+			{
+				"path": "psycho",
+				"response": "You are the chosen one and now is the time"
+			},
+			{
+				"path": "disclosure",
+				"response": "I just said something stupid, sorry.."
+			}
+		],
+		"title": "What a heck are you talking about?!"
+	},
+	"haggler": {
+		"choices": [
+			{
+				"path": "disclosure",
+				"response": "I'm so sorry..."
+			}
+		],
+		"title": "You are pathetic."
+	},
+	"happy-game": {
+		"choices": [],
+		"title": "Happy game!"
+	},
+	"in-the-wrong-place": {
+		"choices": [
+			{
+				"path": "negotiating",
+				"response": "Hey, wait, let's talk!"
+			},
+			{
+				"path": "gabriela-order",
+				"response": "I was sent by the holy order of Gabriela"
+			}
+		],
+		"title": "You are not supposed to be here"
+	},
+	"irritative-asking": {
+		"choices": [
+			{
+				"path": "am-right",
+				"response": "You are right"
+			},
+			{
+				"path": "almost-lost",
+				"response": "This is because you didn't tell me"
+			}
+		],
+		"title": "You don't even know a thing about the first game"
+	},
+	"killing": {
+		"choices": [
+			{
+				"path": "cruelty",
+				"response": "Real bad"
+			},
+			{
+				"path": "pretending",
+				"response": "Ha-ha, I was just joking"
+			}
+		],
+		"title": "How bad do you want to kill me?"
+	},
+	"lost": {
+		"choices": [
+			{
+				"path": "welcome",
+				"response": "Play again"
+			}
+		],
+		"title": "You have lost the game"
+	},
+	"negotiating": {
+		"choices": [
+			{
+				"path": "haggler",
+				"response": "I have money, kitchen silver!.."
+			},
+			{
+				"path": "occult-offering",
+				"response": "I shall give you my soul and body"
+			}
+		],
+		"title": "And what do you have to offer?"
+	},
+	"occult-offering": {
+		"choices": [],
+		"title": "Write down your name to complete the ritual"
+	},
+	"presumptuous": {
+		"choices": [
+			{
+				"path": "cucumber-or-tomatoe",
+				"response": "Self-critical"
+			},
+			{
+				"path": "self-pitying",
+				"response": "Self-pitying"
+			}
+		],
+		"title": "Self-critical or self-pitying?"
+	},
+	"pretending": {
+		"choices": [
+			{
+				"path": "pussy",
+				"response": "Yes"
+			},
+			{
+				"path": "cruelty",
+				"response": "No, actually I want to kill you"
+			}
+		],
+		"title": "Were you really joking?"
+	},
+	"psycho": {
+		"choices": [
+			{
+				"path": "lost",
+				"response": "HAHAHAHAHAHA"
+			}
+		],
+		"title": "You are a freaking psycho, go away"
+	},
+	"pussy": {
+		"choices": [
+			{
+				"path": "confused",
+				"response": "What?.."
+			},
+			{
+				"path": "daring",
+				"response": "No, I can kill you!"
+			}
+		],
+		"title": "You are weak. You are not able to do what is needed."
+	},
+	"questionable-agreeing": {
+		"choices": [
+			{
+				"path": "subterfuge",
+				"response": "Oh no, I'm not lying"
+			},
+			{
+				"path": "regret",
+				"response": "Yes, I shouldn't have.."
+			}
+		],
+		"title": "I think you are lying!"
+	},
+	"red-or-yellow": {
+		"choices": [
+			{
+				"path": "silly-test-passed",
+				"response": "Red"
+			},
+			{
+				"path": "silly-test-passed",
+				"response": "Yellow"
+			}
+		],
+		"title": "Red or yellow?"
+	},
+	"regret": {
+		"choices": [
+			{
+				"path": "black-door1",
+				"response": "Okay, ask!"
+			},
+			{
+				"path": "black-door1",
+				"response": "Whatever"
+			}
+		],
+		"title": "Correct. Now. If you want to stay, answer my questions."
+	},
+	"reject-playing": {
+		"choices": [
+			{
+				"path": "happy-game",
+				"response": "Okay, let me play your game"
+			},
+			{
+				"path": "almost-lost",
+				"response": "I don't care!"
+			}
+		],
+		"title": "If you don't choose to play, you will lose now."
+	},
+	"remorse": {
+		"choices": [
+			{
+				"path": "happy-game",
+				"response": "Yes, let's play"
+			},
+			{
+				"path": "another-game",
+				"response": "I still don't want to play"
+			}
+		],
+		"title": "So are we playing the game?"
+	},
+	"sad-game": {
+		"choices": [],
+		"title": "Sad game"
+	},
+	"sad-game-desc": {
+		"choices": [
+			{
+				"path": "sad-game",
+				"response": "Alright, alright, let's play"
+			},
+			{
+				"path": "difference-desc",
+				"response": "And how is it different?"
+			}
+		],
+		"title": "It is a game that is different from the first"
+	},
+	"self-confident": {
+		"choices": [
+			{
+				"path": "killing",
+				"response": "I'm here to kill you"
+			},
+			{
+				"path": "afraid",
+				"response": "I'm afraid"
+			}
+		],
+		"title": "Hmmm, I see. So let me ask again. What is your purpose?"
+	},
+	"self-pitying": {
+		"choices": [
+			{
+				"path": "welcome-repeat",
+				"response": "Fine, thanks.."
+			},
+			{
+				"path": "therapy",
+				"response": "I will never be like others!"
+			}
+		],
+		"title": "Oh come on, you are just fine!"
+	},
+	"silly-test-passed": {
+		"choices": [
+			{
+				"path": "what-now",
+				"response": "So, what's now?"
+			},
+			{
+				"path": "what-now",
+				"response": "Do I get a cookie?"
+			}
+		],
+		"title": "Congratulations. All questions were answered correctly."
+	},
+	"subterfuge": {
+		"choices": [],
+		"title": "Do something to determine success"
+	},
+	"therapy": {
+		"choices": [],
+		"title": "Therapy path"
+	},
+	"want-to-play": {
+		"choices": [
+			{
+				"path": "happy-game",
+				"response": "The first game"
+			},
+			{
+				"path": "sad-game",
+				"response": "The second one"
+			}
+		],
+		"title": "Oh, this is so great! Which game do you want to play?"
+	},
+	"welcome": {
+		"choices": [
+			{
+				"path": "killing",
+				"response": "I'm here to kill you"
+			},
+			{
+				"path": "afraid",
+				"response": "I'm afraid"
+			}
+		],
+		"title": "What is your purpose?"
+	},
+	"welcome-repeat": {
+		"choices": [
+			{
+				"path": "killing",
+				"response": "I'm here to kill you"
+			},
+			{
+				"path": "afraid",
+				"response": "I'm afraid"
+			}
+		],
+		"title": "So what is your purpose?"
+	},
+	"what-now": {
+		"choices": [
+			{
+				"path": "happy-game",
+				"response": "Yes, I do!"
+			},
+			{
+				"path": "reject-playing",
+				"response": "Not really.."
+			}
+		],
+		"title": "Now we play the game. Do you like games?"
+	}
 }
