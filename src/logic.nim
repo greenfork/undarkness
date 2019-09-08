@@ -3,7 +3,7 @@ from os import `/`
 import json as json
 
 import karax / [kbase, karax, karaxdsl, vdom, compact, jstrutils]
-import rendering
+import rendering, private / debugging
 
 type
   QuestionScreen = object
@@ -21,7 +21,7 @@ var
 
 proc initLogic* =
   questionJson = json.parseJson(questionJsonData)
-  echo questionJson
+  dbgEcho questionJson
   for key, screen in questionJson.pairs:
     questionScreens[key] = json.to(screen, QuestionScreen)
   defaultScreen = questionScreens["welcome"]
@@ -29,6 +29,7 @@ proc initLogic* =
 proc createDom*(rd: RouterData): VNode =
   let key = if rd.hashPart != "": ($rd.hashPart)[1..<len(rd.hashPart)]
             else: ""
+  dbgEcho key
   let screen = questionScreens.getOrDefault(key, defaultScreen)
   withLayout:
     renderQuestion(screen.title)
