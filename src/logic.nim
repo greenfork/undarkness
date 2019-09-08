@@ -12,17 +12,17 @@ type
 
 const
   textsPath = ".." / "gamedata" / "texts"
-  questionJsonData = slurp(textsPath / "questions.json")
+  questionsJsonData = slurp(textsPath / "questions.json")
 
 var
-  questionJson: JsonNode
+  questionsJson: JsonNode
   questionScreens = initTable[kstring, QuestionScreen]()
   defaultScreen: QuestionScreen
 
 proc initLogic* =
-  questionJson = json.parseJson(questionJsonData)
-  dbgEcho questionJson
-  for key, screen in questionJson.pairs:
+  questionsJson = json.parseJson(questionsJsonData)
+  dbgEcho questionsJson
+  for key, screen in questionsJson.pairs:
     questionScreens[key] = json.to(screen, QuestionScreen)
   defaultScreen = questionScreens["welcome"]
 
