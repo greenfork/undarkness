@@ -13,7 +13,7 @@
         ]
     },
     "killing": {
-        "title": "How bad do you want it?",
+        "title": "How bad do you want to kill me?",
         "choices": [
             {
                 "response": "Real bad",
@@ -22,6 +22,19 @@
             {
                 "response": "Ha-ha, I was just joking",
                 "path": "pretending"
+            }
+        ]
+    },
+    "pretending": {
+        "title": "Were you really joking?",
+        "choices": [
+            {
+                "response": "Yes",
+                "path": "pussy"
+            },
+            {
+                "response": "No, actually I want to kill you",
+                "path": "cruelty"
             }
         ]
     }
