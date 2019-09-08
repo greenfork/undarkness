@@ -1,4 +1,4 @@
-include karax / prelude
+import karax / [kbase, karax, karaxdsl, vdom, compact, jstrutils]
 import karax / kdom except class
 
 proc renderQuestion*(title: string): VNode =

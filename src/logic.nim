@@ -2,8 +2,7 @@ import tables
 from os import `/`
 import json as json
 
-include karax / prelude
-
+import karax / [kbase, karax, karaxdsl, vdom, compact, jstrutils]
 import rendering
 
 type
