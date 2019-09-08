@@ -16,8 +16,16 @@ proc renderChoices*(choices: openArray[Choice]): VNode =
           for btn in document.querySelectorAll(".buttons .button"):
             btn.blur()
 
+proc listenForKeys: NativeEventHandler =
+  result = proc (ev: Event) =
+             if cast[KeyboardEvent](ev).keyCode == 82:
+               echo "Pressed r"
+  document.addEventListener("keyup", result)
+
+
 template withLayout*(content: untyped) =
   result = buildHtml(tdiv(class = "hero is-dark is-fullheight")):
     tdiv(class="hero-body"):
       tdiv(class="container"):
         content
+  discard listenForKeys()
