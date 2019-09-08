@@ -5,8 +5,10 @@ proc renderQuestion*(title: string): VNode =
   result = buildHtml(h1(class="title has-text-centered")):
     text title
 
-type Choice* = object
-  response*, path*: string
+type
+  Choice* = object
+    response*, path*: string
+
 proc renderChoices*(choices: openArray[Choice]): VNode =
   result = buildHtml(tdiv(class="buttons are-medium is-centered")):
     for choice in choices:
