@@ -16,7 +16,7 @@ const
 
 var
   questionJson: JsonNode
-  questionScreens = initTable[string, QuestionScreen]()
+  questionScreens = initTable[kstring, QuestionScreen]()
   defaultScreen: QuestionScreen
 
 proc initLogic* =

@@ -1,7 +1,7 @@
 import karax / [kbase, karax, karaxdsl, vdom, compact, jstrutils]
 import karax / kdom except class
 
-proc renderQuestion*(title: string): VNode =
+proc renderQuestion*(title: kstring): VNode =
   result = buildHtml(h1(class="title has-text-centered")):
     text title
 
