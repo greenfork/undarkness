@@ -15,7 +15,7 @@ var
 
 type
   NodeProps = ref object
-    label, class: cstring
+    label, class, style: cstring
     rx, ry: int
   EdgeProps = ref object
     label, class: cstring
@@ -29,6 +29,8 @@ proc createDom() =
     g.setNode(name, NodeProps{label: name, rx: 5, ry: 5})
     for choice in items(obj["choices"]):
       g.setEdge(name, choice["path"].getStr())
+  for node in g.nodes():
+    if g.isLeaf(node).to(bool): g.node(node).style = cstring"fill: red"
 
   var
     d3Render = jsNew(dagreD3.render()).to(proc(a, b: auto))
