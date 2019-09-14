@@ -16,7 +16,7 @@ requires "nim >= 0.20.0", "karax >= 1.1.0"
 
 # Tasks
 
-task visualize, "Draw a map of all the questions":
+task pathgraph, "Draw a map of all the questions":
   withDir "src/tools":
-    exec "nim c -d:release -r question_visualizer.nim"
-    rmFile "question_visualizer"
+    exec "nim js path_graph.nim"
+    mvFile "path_graph.js", "../../js/path_graph.js"
