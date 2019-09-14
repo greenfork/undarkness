@@ -1,28 +1,39 @@
-from json import nil
+import json
+from os import `/`
 import jsffi
 import .. / private / debugging
 
-var d3 {.importc, nodecl.}: JsObject
-var dagreD3 {.importc, nodecl.}: JsObject
-var console {.importc, nodecl.}: JsObject
+const
+  textsPath = ".." / ".." / "gamedata" / "texts"
+  questionsJsonData = slurp(textsPath / "questions.json")
+
+# Global JS objects.
+var
+  d3 {.importc, nodecl.}: JsObject ## d3 JS library
+  dagreD3 {.importc, nodecl.}: JsObject ## dagreD3 JS library
+  console {.importc, nodecl.}: JsObject
+
 type
   NodeProps = ref object
     label, class: cstring
+  EdgeProps = ref object
+    label, class: cstring
 
 proc createDom() =
-  dbgEcho "rendering DOM"
+  var questionsJson = parseJson(questionsJsonData)
   var g = jsNew(dagreD3.graphlib.Graph()).setGraph(newJsObject())
     .setDefaultEdgeLabel(proc():auto = JsObject{})
 
-  g.setNode("0", NodeProps{label: "TOP", class: "type-TOP"})
-  g.setNode("1", NodeProps{label: "S", class: "type-S"})
+  for name, obj in questionsJson.pairs:
+    g.setNode(name, NodeProps{label: name})
+    for choice in items(obj["choices"]):
+      g.setEdge(name, choice["path"].getStr())
 
   for node in g.nodes():
     var node = g.node(node)
     node.rx = 5
     node.ry = 5
 
-  g.setEdge("0", "1")
   var
     d3Render = jsNew(dagreD3.render()).to(proc(a, b: auto))
     svg: JsObject = d3.select("svg")

@@ -6,7 +6,7 @@ import karax / [kbase, karax, karaxdsl, vdom, compact, jstrutils]
 import rendering, private / debugging
 
 type
-  QuestionScreen = object
+  QuestionScreen* = object
     title*: string
     choices*: seq[Choice]
 
