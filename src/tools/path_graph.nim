@@ -34,12 +34,22 @@ proc createDom() =
     d3Render = jsNew(dagreD3.render()).to(proc(a, b: auto))
     svg: JsObject = d3.select("svg")
     svgGroup: JsObject = svg.append("g")
-  d3Render(d3.select("svg g"), g)
+    inner: JsObject = svg.select("g")
+    zoom = d3.zoom().on("zoom", proc() =
+      inner.attr("transform", d3.event.transform))
+  svg.call(zoom)
+  d3Render(inner, g)
+  console.log(g)
 
-  # Centering the graph.
-  var xCenterOffset = (svg.attr("width") - g.graph().width) / 2.toJs()
-  svgGroup.attr("transform", "translate(" & xCenterOffset.to(cstring) & ", 20)")
-  svg.attr("height", g.graph().height + 40.toJs())
+  # Centering the graph with zoom.
+  var initialScale = 0.6.toJs
+  svg.call(
+    zoom.transform,
+    d3.zoomIdentity.translate(
+      (svg.attr("width") - g.graph().width * initialScale) / 2.toJs, 20.toJs
+    ).scale(initialScale)
+  )
+  svg.attr("height", g.graph().height * initialScale + 40.toJs)
 
 when isMainModule:
   proc main() =
