@@ -22,6 +22,7 @@ var NTI10287 = {size: 0,kind: 35,base: null,node: null,finalizer: null};
 var NTI179202 = {size: 0, kind: 14, base: null, node: null, finalizer: null};
 var NTI179206 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI179204 = {size: 0,kind: 22,base: null,node: null,finalizer: null};
+var NTI104 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
 var NTI159015 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
 var NTI179234 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI179231 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
@@ -32,8 +33,6 @@ var NTI4062 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI4042 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI4046 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI4060 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI104 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI21156 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI4008 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI4114 = {size: 0,kind: 22,base: null,node: null,finalizer: null};
 var NTI114 = {size: 0,kind: 40,base: null,node: null,finalizer: null};
@@ -61,9 +60,6 @@ NTI4008.node = NNI4008;
 NTI4026.base = NTI4008;
 NTI4028.base = NTI4026;
 NTI4050.base = NTI4028;
-var NNI21156 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI140, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
-NTI21156.node = NNI21156;
 var NNI4060 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI4060.node = NNI4060;
 NTI4060.base = NTI4028;
@@ -303,22 +299,12 @@ function makeNimstrLit(c_23254) {
 	
 }
 
-function arrayConstr(len_24686, value_24687, typ_24688) {
-		    var result = new Array(len_24686);
-    for (var i = 0; i < len_24686; ++i) result[i] = nimCopy(null, value_24687, typ_24688);
-    return result;
-  
-
-	
-}
-
 function raiseException(e_21618, ename_21619) {
 		e_21618.name = ename_21619;
 		if ((excHandler == 0)) {
 		unhandledException(e_21618);
 		}
 		
-		e_21618.trace = nimCopy(null, raw_write_stack_trace_21468(), NTI138);
 		throw e_21618;
 
 	
@@ -496,79 +482,6 @@ function add_18638(x_18641, x_18641_Idx, y_18642) {
 	
 }
 
-function aux_write_stack_trace_21151(f_21153) {
-					var Tmp3;
-
-	var result_21154 = [null];
-
-		var it_21162 = f_21153;
-		var i_21164 = 0;
-		var total_21166 = 0;
-		var temp_frames_21173 = arrayConstr(64, {Field0: null, Field1: 0}, NTI21156);
-		L1: do {
-				L2: while (true) {
-					if (!!((it_21162 == null))) Tmp3 = false; else {						Tmp3 = (i_21164 <= 63);					}				if (!Tmp3) break L2;
-					temp_frames_21173[i_21164].Field0 = it_21162.procname;
-					temp_frames_21173[i_21164].Field1 = it_21162.line;
-					i_21164 += 1;
-					total_21166 += 1;
-					it_21162 = it_21162.prev;
-				}
-		} while(false);
-		L4: do {
-				L5: while (true) {
-				if (!!((it_21162 == null))) break L5;
-					total_21166 += 1;
-					it_21162 = it_21162.prev;
-				}
-		} while(false);
-		result_21154[0] = nimCopy(null, [], NTI138);
-		if (!((total_21166 == i_21164))) {
-		if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit("(")); } else { result_21154[0] = makeNimstrLit("("); };
-		if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(cstrToNimstr(((total_21166 - i_21164))+"")); } else { result_21154[0] = cstrToNimstr(((total_21166 - i_21164))+"").slice(); };
-		if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit(" calls omitted) ...\x0A")); } else { result_21154[0] = makeNimstrLit(" calls omitted) ...\x0A"); };
-		}
-		
-		L6: do {
-			var j_21421 = 0;
-			var colontmp__232064 = 0;
-			colontmp__232064 = (i_21164 - 1);
-			var res_232069 = colontmp__232064;
-			L7: do {
-					L8: while (true) {
-					if (!(0 <= res_232069)) break L8;
-						j_21421 = res_232069;
-						add_18638(result_21154, 0, temp_frames_21173[j_21421].Field0);
-						if ((0 < temp_frames_21173[j_21421].Field1)) {
-						if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit(", line: ")); } else { result_21154[0] = makeNimstrLit(", line: "); };
-						if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(cstrToNimstr((temp_frames_21173[j_21421].Field1)+"")); } else { result_21154[0] = cstrToNimstr((temp_frames_21173[j_21421].Field1)+"").slice(); };
-						}
-						
-						if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit("\x0A")); } else { result_21154[0] = makeNimstrLit("\x0A"); };
-						res_232069 -= 1;
-					}
-			} while(false);
-		} while(false);
-
-	return result_21154[0];
-
-}
-
-function raw_write_stack_trace_21468() {
-	var result_21470 = null;
-
-		if (!((framePtr == null))) {
-		result_21470 = nimCopy(null, (makeNimstrLit("Traceback (most recent call last)\x0A") || []).concat(aux_write_stack_trace_21151(framePtr) || []), NTI138);
-		}
-		else {
-			result_21470 = nimCopy(null, makeNimstrLit("No stack traceback available\x0A"), NTI138);
-		}
-		
-
-	return result_21470;
-
-}
-
 function unhandledException(e_21529) {
 		var buf_21530 = [[]];
 		if (!(((e_21529.message != null ? e_21529.message.length : 0) == 0))) {
@@ -582,7 +495,6 @@ function unhandledException(e_21529) {
 		if (buf_21530[0] != null) { buf_21530[0] = (buf_21530[0]).concat(makeNimstrLit(" [")); } else { buf_21530[0] = makeNimstrLit(" ["); };
 		add_18638(buf_21530, 0, e_21529.name);
 		if (buf_21530[0] != null) { buf_21530[0] = (buf_21530[0]).concat(makeNimstrLit("]\x0A")); } else { buf_21530[0] = makeNimstrLit("]\x0A"); };
-		if (buf_21530[0] != null) { buf_21530[0] = (buf_21530[0]).concat(raw_write_stack_trace_21468()); } else { buf_21530[0] = raw_write_stack_trace_21468().slice(); };
 		var cbuf_21601 = toJSStr(buf_21530[0]);
 		framePtr = null;
 		  if (typeof(Error) !== "undefined") {
@@ -597,37 +509,22 @@ function unhandledException(e_21529) {
 }
 
 function sys_fatal_14862(message_14866) {
-	var F={procname:"sysFatal.sysFatal",prev:framePtr,filename:"fatal.nim",line:0};
-	framePtr = F;
-		F.line = 34;
 		var e_15003 = null;
-		F.line = 37;
 		e_15003 = {m_type: NTI4050, parent: null, name: null, message: null, trace: null, raiseId: 0, up: null};
-		F.line = 38;
 		e_15003.message = nimCopy(null, message_14866, NTI138);
-		F.line = 39;
 		raiseException(e_15003, "AssertionError");
-	framePtr = F.prev;
 
 	
 }
 
 function raise_assert_14858(msg_14860) {
-	var F={procname:"assertions.raiseAssert",prev:framePtr,filename:"assertions.nim",line:0};
-	framePtr = F;
-		F.line = 20;
 		sys_fatal_14862(msg_14860);
-	framePtr = F.prev;
 
 	
 }
 
 function failed_assert_impl_15051(msg_15053) {
-	var F={procname:"assertions.failedAssertImpl",prev:framePtr,filename:"assertions.nim",line:0};
-	framePtr = F;
-		F.line = 27;
 		raise_assert_14858(msg_15053);
-	framePtr = F.prev;
 
 	
 }
@@ -635,61 +532,48 @@ function failed_assert_impl_15051(msg_15053) {
 function get_var_type_197509(x_197511) {
 	var result_197512 = 0;
 
-	var F={procname:"json.getVarType",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 	BeforeRet: do {
-		F.line = 871;
 		result_197512 = 0;
-		F.line = 874;
 		switch (toJSStr(cstrToNimstr(Object.prototype.toString.call(x_197511)))) {
 		case "[object Array]":
-			F.line = 875;
 			result_197512 = 6;
 			break BeforeRet;
 			break;
 		case "[object Object]":
-			F.line = 876;
 			result_197512 = 5;
 			break BeforeRet;
 			break;
 		case "[object Number]":
 			if ((x_197511 % 1.0000000000000000e+00 == 0.0)) {
-			F.line = 879;
 			result_197512 = 2;
 			break BeforeRet;
 			}
 			else {
-				F.line = 881;
 				result_197512 = 3;
 				break BeforeRet;
 			}
 			
 			break;
 		case "[object Boolean]":
-			F.line = 882;
 			result_197512 = 1;
 			break BeforeRet;
 			break;
 		case "[object Null]":
-			F.line = 883;
 			result_197512 = 0;
 			break BeforeRet;
 			break;
 		case "[object String]":
-			F.line = 884;
 			result_197512 = 4;
 			break BeforeRet;
 			break;
 		default: 
 			if (true) {
-			F.line = 885;
-			failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(885, 18) `false` "));
+			failed_assert_impl_15051(makeNimstrLit("json.nim(885, 18) `false` "));
 			}
 			
 			break;
 		}
 	} while (false);
-	framePtr = F.prev;
 
 	return result_197512;
 
@@ -698,11 +582,7 @@ function get_var_type_197509(x_197511) {
 function new_jarray_179642() {
 	var result_179644 = null;
 
-	var F={procname:"json.newJArray",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 219;
 		result_179644 = {kind: 6, elems: [], str: null, num: 0, fnum: 0.0, bval: false, fields: {data: null, counter: 0, first: 0, last: 0}};
-	framePtr = F.prev;
 
 	return result_179644;
 
@@ -711,17 +591,12 @@ function new_jarray_179642() {
 function len_197629(x_197631) {
 	var result_197632 = 0;
 
-	var F={procname:"json.len",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 		if (!((get_var_type_197509(x_197631) == 6))) {
-		F.line = 888;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(888, 12) `x.getVarType == JArray` "));
+		failed_assert_impl_15051(makeNimstrLit("json.nim(888, 12) `x.getVarType == JArray` "));
 		}
 		
-		F.line = 889;
 		      result_197632 = x_197631.length;
     
-	framePtr = F.prev;
 
 	return result_197632;
 
@@ -731,18 +606,13 @@ function add_179976(father_179978, child_179979) {
 		var Tmp1;
 		var Tmp2;
 
-	var F={procname:"json.add",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 		if (!((father_179978.kind == 6))) {
-		F.line = 289;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(289, 10) `father.kind == JArray` "));
+		failed_assert_impl_15051(makeNimstrLit("json.nim(289, 10) `father.kind == JArray` "));
 		}
 		
-		F.line = 290;
 		var Tmp1 = father_179978;
 		if (ConstSet2[Tmp1.kind]===undefined) { raiseFieldError(makeNimstrLit("elems")); }
 		if ((Tmp2 = Tmp1.elems, Tmp2) != null) { Tmp2.push(child_179979); } else { Tmp2 = [child_179979]; };
-	framePtr = F.prev;
 
 	
 }
@@ -750,17 +620,12 @@ function add_179976(father_179978, child_179979) {
 function HEX5BHEX5D_198014(x_198016, y_198017) {
 	var result_198018 = {};
 
-	var F={procname:"json.[]",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 		if (!((get_var_type_197509(x_198016) == 6))) {
-		F.line = 900;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(900, 12) `x.getVarType == JArray` "));
+		failed_assert_impl_15051(makeNimstrLit("json.nim(900, 12) `x.getVarType == JArray` "));
 		}
 		
-		F.line = 901;
 		      result_198018 = x_198016[y_198017];
     
-	framePtr = F.prev;
 
 	return result_198018;
 
@@ -803,21 +668,13 @@ function raiseRangeError() {
 function init_ordered_table_179383(initial_size_179387) {
 	var result_179389 = {data: null, counter: 0, first: 0, last: 0};
 
-	var F={procname:"initOrderedTable.initOrderedTable",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
 		if (!(is_power_of_two_59062(initial_size_179387))) {
-		F.line = 118;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/collections/tableimpl.nim(118, 10) `isPowerOfTwo(initialSize)` "));
+		failed_assert_impl_15051(makeNimstrLit("tableimpl.nim(118, 10) `isPowerOfTwo(initialSize)` "));
 		}
 		
-		F.line = 119;
 		result_179389.counter = 0;
-		F.line = 120;
-		result_179389.data = new Array(chckRange(initial_size_179387, 0, 2147483647)); for (var i=0;i<chckRange(initial_size_179387, 0, 2147483647);++i) {result_179389.data[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}		F.line = 122;
-		result_179389.first = -1;
-		F.line = 123;
+		result_179389.data = new Array(chckRange(initial_size_179387, 0, 2147483647)); for (var i=0;i<chckRange(initial_size_179387, 0, 2147483647);++i) {result_179389.data[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}		result_179389.first = -1;
 		result_179389.last = -1;
-	framePtr = F.prev;
 
 	return result_179389;
 
@@ -826,11 +683,7 @@ function init_ordered_table_179383(initial_size_179387) {
 function new_jobject_179378() {
 	var result_179380 = null;
 
-	var F={procname:"json.newJObject",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 215;
 		result_179380 = {kind: 5, fields: init_ordered_table_179383(4), str: null, num: 0, fnum: 0.0, bval: false, elems: null};
-	framePtr = F.prev;
 
 	return result_179380;
 
@@ -868,21 +721,12 @@ function raiseIndexError(i_22639, a_22640, b_22641) {
 function HEX21HEX26_159031(h_159033, val_159034) {
 	var result_159035 = 0;
 
-	var F={procname:"hashes.!&",prev:framePtr,filename:"hashes.nim",line:0};
-	framePtr = F;
-		F.line = 63;
 		var h_159036 = (h_159033 >>> 0);
-		F.line = 64;
 		var val_159037 = (val_159034 >>> 0);
-		F.line = 65;
 		var res_159043 = ((h_159036 + val_159037) >>> 0);
-		F.line = 66;
 		res_159043 = ((res_159043 + (res_159043 << 10)) >>> 0);
-		F.line = 67;
 		res_159043 = (res_159043 ^ ((res_159043 >>> 0) >>> 6));
-		F.line = 68;
 		result_159035 = (res_159043|0);
-	framePtr = F.prev;
 
 	return result_159035;
 
@@ -891,11 +735,7 @@ function HEX21HEX26_159031(h_159033, val_159034) {
 function hash_159869(x_159871) {
 	var result_159872 = 0;
 
-	var F={procname:"hashes.hash",prev:framePtr,filename:"hashes.nim",line:0};
-	framePtr = F;
-		F.line = 141;
 		result_159872 = x_159871;
-	framePtr = F.prev;
 
 	return result_159872;
 
@@ -904,19 +744,11 @@ function hash_159869(x_159871) {
 function HEX21HEX24_159081(h_159083) {
 	var result_159084 = 0;
 
-	var F={procname:"hashes.!$",prev:framePtr,filename:"hashes.nim",line:0};
-	framePtr = F;
-		F.line = 74;
 		var h_159085 = (h_159083 >>> 0);
-		F.line = 75;
 		var res_159098 = ((h_159085 + (h_159085 << 3)) >>> 0);
-		F.line = 76;
 		res_159098 = (res_159098 ^ ((res_159098 >>> 0) >>> 11));
-		F.line = 77;
 		res_159098 = ((res_159098 + (res_159098 << 15)) >>> 0);
-		F.line = 78;
 		result_159084 = (res_159098|0);
-	framePtr = F.prev;
 
 	return result_159084;
 
@@ -925,53 +757,33 @@ function HEX21HEX24_159081(h_159083) {
 function hash_159980(x_159982) {
 	var result_159983 = 0;
 
-	var F={procname:"hashes.hash",prev:framePtr,filename:"hashes.nim",line:0};
-	framePtr = F;
-		F.line = 165;
 		var element_size_159985 = 1;
-		F.line = 166;
 		var step_size_159986 = divInt(4, element_size_159985);
-		F.line = 167;
 		var i_159987 = 0;
 		L1: do {
-			F.line = 168;
 				L2: while (true) {
 				if (!(i_159987 <= subInt(addInt((x_159982 != null ? (x_159982.length-1) : -1), 1), step_size_159986))) break L2;
-					F.line = 169;
 					var n_159988 = 0;
-					F.line = 175;
 					n_159988 = x_159982[chckIndx(i_159987, 0, x_159982.length+0-1)-0];
-					F.line = 176;
 					result_159983 = HEX21HEX26_159031(result_159983, n_159988);
-					F.line = 177;
 					i_159987 = addInt(i_159987, step_size_159986);
 				}
 		} while(false);
 		L3: do {
-			F.line = 159;
 			var i_160207 = 0;
-			F.line = 2679;
-			var colontmp__232087 = 0;
-			F.line = 189;
-			colontmp__232087 = (x_159982 != null ? (x_159982.length-1) : -1);
-			F.line = 2689;
-			var res_232088 = i_159987;
+			var colontmp__232078 = 0;
+			colontmp__232078 = (x_159982 != null ? (x_159982.length-1) : -1);
+			var res_232079 = i_159987;
 			L4: do {
-				F.line = 2690;
 					L5: while (true) {
-					if (!(res_232088 <= colontmp__232087)) break L5;
-						F.line = 159;
-						i_160207 = res_232088;
-						F.line = 160;
+					if (!(res_232079 <= colontmp__232078)) break L5;
+						i_160207 = res_232079;
 						result_159983 = HEX21HEX26_159031(result_159983, hash_159869(x_159982[chckIndx(i_160207, 0, x_159982.length+0-1)-0]));
-						F.line = 2692;
-						res_232088 = addInt(res_232088, 1);
+						res_232079 = addInt(res_232079, 1);
 					}
 			} while(false);
 		} while(false);
-		F.line = 161;
 		result_159983 = HEX21HEX24_159081(result_159983);
-	framePtr = F.prev;
 
 	return result_159983;
 
@@ -980,11 +792,7 @@ function hash_159980(x_159982) {
 function is_filled_163418(hcode_163420) {
 	var result_163421 = false;
 
-	var F={procname:"tables.isFilled",prev:framePtr,filename:"hashcommon.nim",line:0};
-	framePtr = F;
-		F.line = 27;
 		result_163421 = !((hcode_163420 == 0));
-	framePtr = F.prev;
 
 	return result_163421;
 
@@ -993,11 +801,7 @@ function is_filled_163418(hcode_163420) {
 function next_try_163435(h_163437, max_hash_163438) {
 	var result_163439 = 0;
 
-	var F={procname:"tables.nextTry",prev:framePtr,filename:"hashcommon.nim",line:0};
-	framePtr = F;
-		F.line = 30;
 		result_163439 = (addInt(h_163437, 1) & max_hash_163438);
-	framePtr = F.prev;
 
 	return result_163439;
 
@@ -1008,42 +812,31 @@ function raw_get_180821(t_180826, key_180827, hc_180828, hc_180828_Idx) {
 
 	var result_180829 = 0;
 
-	var F={procname:"rawGet.rawGet",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
 	BeforeRet: do {
-		F.line = 54;
 		hc_180828[hc_180828_Idx] = hash_159980(key_180827);
 		if ((hc_180828[hc_180828_Idx] == 0)) {
-		F.line = 56;
 		hc_180828[hc_180828_Idx] = 314159265;
 		}
 		
 		if (((t_180826.data != null ? t_180826.data.length : 0) == 0)) {
-		F.line = 38;
 		result_180829 = -1;
 		break BeforeRet;
 		}
 		
-		F.line = 39;
 		var h_180971 = (hc_180828[hc_180828_Idx] & (t_180826.data != null ? (t_180826.data.length-1) : -1));
 		L1: do {
-			F.line = 40;
 				L2: while (true) {
 				if (!is_filled_163418(t_180826.data[chckIndx(h_180971, 0, t_180826.data.length+0-1)-0].Field0)) break L2;
 						if (!(t_180826.data[chckIndx(h_180971, 0, t_180826.data.length+0-1)-0].Field0 == hc_180828[hc_180828_Idx])) Tmp3 = false; else {							Tmp3 = eqStrings(t_180826.data[chckIndx(h_180971, 0, t_180826.data.length+0-1)-0].Field2, key_180827);						}					if (Tmp3) {
-					F.line = 46;
 					result_180829 = h_180971;
 					break BeforeRet;
 					}
 					
-					F.line = 47;
 					h_180971 = next_try_163435(h_180971, (t_180826.data != null ? (t_180826.data.length-1) : -1));
 				}
 		} while(false);
-		F.line = 48;
 		result_180829 = subInt(-1, h_180971);
 	} while (false);
-	framePtr = F.prev;
 
 	return result_180829;
 
@@ -1052,90 +845,58 @@ function raw_get_180821(t_180826, key_180827, hc_180828, hc_180828_Idx) {
 function must_rehash_163453(length_163455, counter_163456) {
 	var result_163457 = false;
 
-	var F={procname:"tables.mustRehash",prev:framePtr,filename:"hashcommon.nim",line:0};
-	framePtr = F;
 		if (!((counter_163456 < length_163455))) {
-		F.line = 33;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/collections/hashcommon.nim(33, 9) `length > counter` "));
+		failed_assert_impl_15051(makeNimstrLit("hashcommon.nim(33, 9) `length > counter` "));
 		}
 		
-		F.line = 34;
 		result_163457 = ((mulInt(length_163455, 2) < mulInt(counter_163456, 3)) || (subInt(length_163455, counter_163456) < 4));
-	framePtr = F.prev;
 
 	return result_163457;
 
 }
 
 function raw_insert_183265(t_183271, data_183274, data_183274_Idx, key_183275, val_183276, hc_183277, h_183278) {
-	var F={procname:"rawInsert.rawInsert",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
-		F.line = 22;
 		data_183274[data_183274_Idx][chckIndx(h_183278, 0, data_183274[data_183274_Idx].length+0-1)-0].Field2 = nimCopy(null, key_183275, NTI138);
-		F.line = 23;
 		data_183274[data_183274_Idx][chckIndx(h_183278, 0, data_183274[data_183274_Idx].length+0-1)-0].Field3 = val_183276;
-		F.line = 24;
 		data_183274[data_183274_Idx][chckIndx(h_183278, 0, data_183274[data_183274_Idx].length+0-1)-0].Field0 = hc_183277;
-		F.line = 1233;
 		data_183274[data_183274_Idx][chckIndx(h_183278, 0, data_183274[data_183274_Idx].length+0-1)-0].Field1 = -1;
 		if ((t_183271.first < 0)) {
-		F.line = 1234;
 		t_183271.first = h_183278;
 		}
 		
 		if ((0 <= t_183271.last)) {
-		F.line = 1235;
 		data_183274[data_183274_Idx][chckIndx(t_183271.last, 0, data_183274[data_183274_Idx].length+0-1)-0].Field1 = h_183278;
 		}
 		
-		F.line = 1236;
 		t_183271.last = h_183278;
-	framePtr = F.prev;
 
 	
 }
 
 function enlarge_182167(t_182173) {
-	var F={procname:"enlarge.enlarge",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
-		F.line = 1239;
 		var n_182181 = null;
-		F.line = 1240;
-		n_182181 = new Array(chckRange(mulInt((t_182173.data != null ? t_182173.data.length : 0), 2), 0, 2147483647)); for (var i=0;i<chckRange(mulInt((t_182173.data != null ? t_182173.data.length : 0), 2), 0, 2147483647);++i) {n_182181[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}		F.line = 1241;
-		var h_182320 = t_182173.first;
-		F.line = 1242;
+		n_182181 = new Array(chckRange(mulInt((t_182173.data != null ? t_182173.data.length : 0), 2), 0, 2147483647)); for (var i=0;i<chckRange(mulInt((t_182173.data != null ? t_182173.data.length : 0), 2), 0, 2147483647);++i) {n_182181[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}		var h_182320 = t_182173.first;
 		t_182173.first = -1;
-		F.line = 1243;
 		t_182173.last = -1;
-		F.line = 1244;
 		var Tmp1 = t_182173.data; t_182173.data = n_182181; n_182181 = Tmp1;		L2: do {
-			F.line = 1245;
 				L3: while (true) {
 				if (!(0 <= h_182320)) break L3;
-					F.line = 1246;
 					var nxt_182479 = n_182181[chckIndx(h_182320, 0, n_182181.length+0-1)-0].Field1;
-					F.line = 1247;
 					var eh_182628 = n_182181[chckIndx(h_182320, 0, n_182181.length+0-1)-0].Field0;
 					if (is_filled_163418(eh_182628)) {
-					F.line = 1249;
 					var j_182635 = (eh_182628 & (t_182173.data != null ? (t_182173.data.length-1) : -1));
 					L4: do {
-						F.line = 1250;
 							L5: while (true) {
 							if (!is_filled_163418(t_182173.data[chckIndx(j_182635, 0, t_182173.data.length+0-1)-0].Field0)) break L5;
-								F.line = 1251;
 								j_182635 = next_try_163435(j_182635, (t_182173.data != null ? (t_182173.data.length-1) : -1));
 							}
 					} while(false);
-					F.line = 1252;
 					raw_insert_183265(t_182173, t_182173, "data", n_182181[chckIndx(h_182320, 0, n_182181.length+0-1)-0].Field2, n_182181[chckIndx(h_182320, 0, n_182181.length+0-1)-0].Field3, n_182181[chckIndx(h_182320, 0, n_182181.length+0-1)-0].Field0, j_182635);
 					}
 					
-					F.line = 1253;
 					h_182320 = nxt_182479;
 				}
 		} while(false);
-	framePtr = F.prev;
 
 	
 }
@@ -1143,98 +904,68 @@ function enlarge_182167(t_182173) {
 function raw_get_known_hc_184082(t_184087, key_184088, hc_184089) {
 	var result_184090 = 0;
 
-	var F={procname:"rawGetKnownHC.rawGetKnownHC",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
 	BeforeRet: do {
 		if (((t_184087.data != null ? t_184087.data.length : 0) == 0)) {
-		F.line = 38;
 		result_184090 = -1;
 		break BeforeRet;
 		}
 		
-		F.line = 39;
 		var h_184229 = (hc_184089 & (t_184087.data != null ? (t_184087.data.length-1) : -1));
 		L1: do {
-			F.line = 40;
 				L2: while (true) {
 				if (!is_filled_163418(t_184087.data[chckIndx(h_184229, 0, t_184087.data.length+0-1)-0].Field0)) break L2;
 					if (((t_184087.data[chckIndx(h_184229, 0, t_184087.data.length+0-1)-0].Field0 == hc_184089) && eqStrings(t_184087.data[chckIndx(h_184229, 0, t_184087.data.length+0-1)-0].Field2, key_184088))) {
-					F.line = 46;
 					result_184090 = h_184229;
 					break BeforeRet;
 					}
 					
-					F.line = 47;
 					h_184229 = next_try_163435(h_184229, (t_184087.data != null ? (t_184087.data.length-1) : -1));
 				}
 		} while(false);
-		F.line = 48;
 		result_184090 = subInt(-1, h_184229);
 	} while (false);
-	framePtr = F.prev;
 
 	return result_184090;
 
 }
 
 function HEX5BHEX5DHEX3D_180311(t_180317, key_180318, val_180319) {
-	var F={procname:"[]=.[]=",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
 		if (((t_180317.data != null ? t_180317.data.length : 0) == 0)) {
 		if (!(is_power_of_two_59062(64))) {
-		F.line = 118;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/collections/tableimpl.nim(118, 10) `isPowerOfTwo(defaultInitialSize)` "));
+		failed_assert_impl_15051(makeNimstrLit("tableimpl.nim(118, 10) `isPowerOfTwo(defaultInitialSize)` "));
 		}
 		
-		F.line = 119;
 		t_180317.counter = 0;
-		F.line = 120;
-		t_180317.data = new Array(64); for (var i=0;i<64;++i) {t_180317.data[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}		F.line = 122;
-		t_180317.first = -1;
-		F.line = 123;
+		t_180317.data = new Array(64); for (var i=0;i<64;++i) {t_180317.data[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}		t_180317.first = -1;
 		t_180317.last = -1;
 		}
 		
-		F.line = 57;
 		var hc_180801 = [0];
-		F.line = 58;
 		var index_181439 = raw_get_180821(t_180317, key_180318, hc_180801, 0);
 		if ((0 <= index_181439)) {
-		F.line = 59;
 		t_180317.data[chckIndx(index_181439, 0, t_180317.data.length+0-1)-0].Field3 = val_180319;
 		}
 		else {
 			if (((t_180317.data != null ? t_180317.data.length : 0) == 0)) {
 			if (!(is_power_of_two_59062(64))) {
-			F.line = 118;
-			failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/collections/tableimpl.nim(118, 10) `isPowerOfTwo(defaultInitialSize)` "));
+			failed_assert_impl_15051(makeNimstrLit("tableimpl.nim(118, 10) `isPowerOfTwo(defaultInitialSize)` "));
 			}
 			
-			F.line = 119;
 			t_180317.counter = 0;
-			F.line = 120;
-			t_180317.data = new Array(64); for (var i=0;i<64;++i) {t_180317.data[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}			F.line = 122;
-			t_180317.first = -1;
-			F.line = 123;
+			t_180317.data = new Array(64); for (var i=0;i<64;++i) {t_180317.data[i]={Field0: 0, Field1: 0, Field2: null, Field3: null};}			t_180317.first = -1;
 			t_180317.last = -1;
 			}
 			
 			if (must_rehash_163453((t_180317.data != null ? t_180317.data.length : 0), t_180317.counter)) {
-			F.line = 49;
 			enlarge_182167(t_180317);
-			F.line = 50;
 			index_181439 = raw_get_known_hc_184082(t_180317, key_180318, hc_180801[0]);
 			}
 			
-			F.line = 51;
 			index_181439 = subInt(-1, index_181439);
-			F.line = 52;
 			raw_insert_183265(t_180317, t_180317, "data", key_180318, val_180319, hc_180801[0], index_181439);
-			F.line = 60;
 			t_180317.counter = addInt(t_180317.counter, 1);
 		}
 		
-	framePtr = F.prev;
 
 	
 }
@@ -1242,18 +973,13 @@ function HEX5BHEX5DHEX3D_180311(t_180317, key_180318, val_180319) {
 function HEX5BHEX5DHEX3D_185214(obj_185216, key_185217, val_185218) {
 		var Tmp1;
 
-	var F={procname:"json.[]=",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 		if (!((obj_185216.kind == 5))) {
-		F.line = 363;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(363, 9) `obj.kind == JObject` "));
+		failed_assert_impl_15051(makeNimstrLit("json.nim(363, 9) `obj.kind == JObject` "));
 		}
 		
-		F.line = 364;
 		var Tmp1 = obj_185216;
 		if (ConstSet3[Tmp1.kind]===undefined) { raiseFieldError(makeNimstrLit("fields")); }
 		HEX5BHEX5DHEX3D_180311(Tmp1.fields, key_185217, val_185218);
-	framePtr = F.prev;
 
 	
 }
@@ -1261,11 +987,7 @@ function HEX5BHEX5DHEX3D_185214(obj_185216, key_185217, val_185218) {
 function new_jint_179311(n_179313) {
 	var result_179314 = null;
 
-	var F={procname:"json.newJInt",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 199;
 		result_179314 = {kind: 2, num: n_179313, str: null, fnum: 0.0, bval: false, fields: {data: null, counter: 0, first: 0, last: 0}, elems: null};
-	framePtr = F.prev;
 
 	return result_179314;
 
@@ -1274,11 +996,7 @@ function new_jint_179311(n_179313) {
 function new_jfloat_179328(n_179330) {
 	var result_179331 = null;
 
-	var F={procname:"json.newJFloat",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 203;
 		result_179331 = {kind: 3, fnum: n_179330, str: null, num: 0, bval: false, fields: {data: null, counter: 0, first: 0, last: 0}, elems: null};
-	framePtr = F.prev;
 
 	return result_179331;
 
@@ -1287,11 +1005,7 @@ function new_jfloat_179328(n_179330) {
 function new_jstring_179261(s_179263) {
 	var result_179264 = null;
 
-	var F={procname:"json.newJString",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 191;
 		result_179264 = {kind: 4, str: nimCopy(null, s_179263, NTI138), num: 0, fnum: 0.0, bval: false, fields: {data: null, counter: 0, first: 0, last: 0}, elems: null};
-	framePtr = F.prev;
 
 	return result_179264;
 
@@ -1300,11 +1014,7 @@ function new_jstring_179261(s_179263) {
 function new_jbool_179345(b_179347) {
 	var result_179348 = null;
 
-	var F={procname:"json.newJBool",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 207;
 		result_179348 = {kind: 1, bval: b_179347, str: null, num: 0, fnum: 0.0, fields: {data: null, counter: 0, first: 0, last: 0}, elems: null};
-	framePtr = F.prev;
 
 	return result_179348;
 
@@ -1313,11 +1023,7 @@ function new_jbool_179345(b_179347) {
 function new_jnull_179362() {
 	var result_179364 = null;
 
-	var F={procname:"json.newJNull",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 211;
 		result_179364 = {kind: 0, str: null, num: 0, fnum: 0.0, bval: false, fields: {data: null, counter: 0, first: 0, last: 0}, elems: null};
-	framePtr = F.prev;
 
 	return result_179364;
 
@@ -1326,76 +1032,51 @@ function new_jnull_179362() {
 function convert_object_198214(x_198216) {
 	var result_198217 = null;
 
-	var F={procname:"json.convertObject",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
-		F.line = 906;
 		switch (get_var_type_197509(x_198216)) {
 		case 6:
-			F.line = 908;
 			result_198217 = new_jarray_179642();
 			L1: do {
-				F.line = 909;
 				var i_198225 = 0;
-				F.line = 2716;
 				var colontmp__232050 = 0;
-				F.line = 909;
 				colontmp__232050 = len_197629(x_198216);
-				F.line = 2717;
 				var i_232051 = 0;
 				L2: do {
-					F.line = 2718;
 						L3: while (true) {
 						if (!(i_232051 < colontmp__232050)) break L3;
-							F.line = 909;
 							i_198225 = i_232051;
-							F.line = 910;
 							add_179976(result_198217, convert_object_198214(HEX5BHEX5D_198014(x_198216, i_198225)));
-							F.line = 2720;
 							i_232051 = addInt(i_232051, 1);
 						}
 				} while(false);
 			} while(false);
 			break;
 		case 5:
-			F.line = 912;
 			result_198217 = new_jobject_179378();
-			F.line = 913;
 			for (var property in x_198216) {
         if (x_198216.hasOwnProperty(property)) {
       
-			F.line = 916;
 			var nim_property_198227 = null;
-			F.line = 917;
 			var nim_value_198228 = {};
-			F.line = 918;
 			nim_property_198227 = property; nim_value_198228 = x_198216[property];
-			F.line = 919;
 			HEX5BHEX5DHEX3D_185214(result_198217, cstrToNimstr(nim_property_198227), convert_object_198214(nim_value_198228));
-			F.line = 920;
 			}}
 			break;
 		case 2:
-			F.line = 922;
 			result_198217 = new_jint_179311(x_198216);
 			break;
 		case 3:
-			F.line = 924;
 			result_198217 = new_jfloat_179328(x_198216);
 			break;
 		case 4:
-			F.line = 926;
 			result_198217 = new_jstring_179261(cstrToNimstr(x_198216));
 			break;
 		case 1:
-			F.line = 928;
 			result_198217 = new_jbool_179345(x_198216);
 			break;
 		case 0:
-			F.line = 930;
 			result_198217 = new_jnull_179362();
 			break;
 		}
-	framePtr = F.prev;
 
 	return result_198217;
 
@@ -1404,14 +1085,10 @@ function convert_object_198214(x_198216) {
 function parse_json_198257(buffer_198259) {
 	var result_198260 = null;
 
-	var F={procname:"json.parseJson",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 	BeforeRet: do {
-		F.line = 933;
 		result_198260 = convert_object_198214(JSON.parse(toJSStr(buffer_198259)));
 		break BeforeRet;
 	} while (false);
-	framePtr = F.prev;
 
 	return result_198260;
 
@@ -1420,11 +1097,7 @@ function parse_json_198257(buffer_198259) {
 function len_186765(t_186770) {
 	var result_186771 = 0;
 
-	var F={procname:"len.len",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
-		F.line = 1473;
 		result_186771 = t_186770.counter;
-	framePtr = F.prev;
 
 	return result_186771;
 
@@ -1435,42 +1108,31 @@ function raw_get_188134(t_188138, key_188139, hc_188140, hc_188140_Idx) {
 
 	var result_188141 = 0;
 
-	var F={procname:"rawGet.rawGet",prev:framePtr,filename:"hashcommon.nim",line:0};
-	framePtr = F;
 	BeforeRet: do {
-		F.line = 54;
 		hc_188140[hc_188140_Idx] = hash_159980(key_188139);
 		if ((hc_188140[hc_188140_Idx] == 0)) {
-		F.line = 56;
 		hc_188140[hc_188140_Idx] = 314159265;
 		}
 		
 		if (((t_188138.data != null ? t_188138.data.length : 0) == 0)) {
-		F.line = 38;
 		result_188141 = -1;
 		break BeforeRet;
 		}
 		
-		F.line = 39;
 		var h_188283 = (hc_188140[hc_188140_Idx] & (t_188138.data != null ? (t_188138.data.length-1) : -1));
 		L1: do {
-			F.line = 40;
 				L2: while (true) {
 				if (!is_filled_163418(t_188138.data[chckIndx(h_188283, 0, t_188138.data.length+0-1)-0].Field0)) break L2;
 						if (!(t_188138.data[chckIndx(h_188283, 0, t_188138.data.length+0-1)-0].Field0 == hc_188140[hc_188140_Idx])) Tmp3 = false; else {							Tmp3 = eqStrings(t_188138.data[chckIndx(h_188283, 0, t_188138.data.length+0-1)-0].Field2, key_188139);						}					if (Tmp3) {
-					F.line = 46;
 					result_188141 = h_188283;
 					break BeforeRet;
 					}
 					
-					F.line = 47;
 					h_188283 = next_try_163435(h_188283, (t_188138.data != null ? (t_188138.data.length-1) : -1));
 				}
 		} while(false);
-		F.line = 48;
 		result_188141 = subInt(-1, h_188283);
 	} while (false);
-	framePtr = F.prev;
 
 	return result_188141;
 
@@ -1480,30 +1142,19 @@ function HEX5BHEX5D_188122(t_188128, key_188129) {
 	var result_188131 = null;
 	var result_188131_Idx = 0;
 
-	var F={procname:"[].[]",prev:framePtr,filename:"tables.nim",line:0};
-	framePtr = F;
-		F.line = 258;
 		var hc_188132 = [0];
-		F.line = 259;
 		var index_188133 = raw_get_188134(t_188128, key_188129, hc_188132, 0);
 		if ((0 <= index_188133)) {
-		F.line = 260;
 		result_188131 = t_188128.data[chckIndx(index_188133, 0, t_188128.data.length+0-1)-0]; result_188131_Idx = "Field3";
 		}
 		else {
-			F.line = 3436;
 			var e_189003 = null;
-			F.line = 3439;
 			e_189003 = {m_type: NTI4054, parent: null, name: null, message: null, trace: null, raiseId: 0, up: null};
-			F.line = 263;
 			e_189003.message = nimCopy(null, (makeNimstrLit("key not found: ") || []).concat(key_188129 || []), NTI138);
-			F.line = 3432;
 			e_189003.parent = null;
-			F.line = 263;
 			raiseException(e_189003, "KeyError");
 		}
 		
-	framePtr = F.prev;
 
 	return [result_188131, result_188131_Idx];
 
@@ -1515,23 +1166,17 @@ function HEX5BHEX5D_189639(node_189641, name_189642) {
 
 	var result_189643 = null;
 
-	var F={procname:"json.[]",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 		if (!(!((node_189641 == null)))) {
-		F.line = 485;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(485, 9) `not isNil(node)` "));
+		failed_assert_impl_15051(makeNimstrLit("json.nim(485, 9) `not isNil(node)` "));
 		}
 		
 		if (!((node_189641.kind == 5))) {
-		F.line = 486;
-		failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(486, 9) `node.kind == JObject` "));
+		failed_assert_impl_15051(makeNimstrLit("json.nim(486, 9) `node.kind == JObject` "));
 		}
 		
-		F.line = 489;
 		var Tmp1 = node_189641;
 		if (ConstSet5[Tmp1.kind]===undefined) { raiseFieldError(makeNimstrLit("fields")); }
 		result_189643 = (Tmp2 = HEX5BHEX5D_188122(Tmp1.fields, name_189642), Tmp2)[0][Tmp2[1]];
-	framePtr = F.prev;
 
 	return result_189643;
 
@@ -1543,16 +1188,12 @@ function get_str_179671(n_179673, default_179674) {
 
 	var result_179675 = null;
 
-	var F={procname:"json.getStr",prev:framePtr,filename:"json.nim",line:0};
-	framePtr = F;
 	BeforeRet: do {
 			if ((n_179673 == null)) Tmp1 = true; else {				Tmp1 = !((n_179673.kind == 4));			}		if (Tmp1) {
-		F.line = 225;
 		result_179675 = nimCopy(null, default_179674, NTI138);
 		break BeforeRet;
 		}
 		else {
-			F.line = 226;
 			var Tmp2 = n_179673;
 			if (ConstSet7[Tmp2.kind]===undefined) { raiseFieldError(makeNimstrLit("str")); }
 			result_179675 = nimCopy(null, Tmp2.str, NTI138);
@@ -1560,7 +1201,6 @@ function get_str_179671(n_179673, default_179674) {
 		}
 		
 	} while (false);
-	framePtr = F.prev;
 
 	return result_179675;
 
@@ -1573,18 +1213,12 @@ function create_dom_231075() {
 				function inner_231131() {
 					var result_231133 = null;
 
-					var F={procname:":anonymous.inner",prev:framePtr,filename:"jsffi.nim",line:0};
-					framePtr = F;
 					BeforeRet: do {
-						F.line = 430;
 						var a_231134 = null;
-						F.line = 431;
 						a_231134 = {};
-						F.line = 450;
 						result_231133 = a_231134;
 						break BeforeRet;
 					} while (false);
-					framePtr = F.prev;
 
 					return result_231133;
 
@@ -1592,11 +1226,7 @@ function create_dom_231075() {
 
 			var result_231114 = null;
 
-			var F={procname:"createDom.:anonymous",prev:framePtr,filename:"path_graph.nim",line:0};
-			framePtr = F;
-				F.line = 26;
 				result_231114 = inner_231131();
-			framePtr = F.prev;
 
 			return result_231114;
 
@@ -1606,24 +1236,15 @@ function create_dom_231075() {
 							function inner_231186() {
 								var result_231188 = null;
 
-								var F={procname:"createDom.inner",prev:framePtr,filename:"jsffi.nim",line:0};
-								framePtr = F;
 								BeforeRet: do {
-									F.line = 430;
 									var a_231189 = null;
-									F.line = 431;
 									a_231189 = {};
-									F.line = 439;
 									a_231189.label = toJSStr(name_231173);
-									F.line = 439;
 									a_231189.rx = 5;
-									F.line = 439;
 									a_231189.ry = 5;
-									F.line = 450;
 									result_231188 = a_231189;
 									break BeforeRet;
 								} while (false);
-								framePtr = F.prev;
 
 								return result_231188;
 
@@ -1631,101 +1252,65 @@ function create_dom_231075() {
 									var Tmp8;
 
 		function HEX3Aanonymous_231762() {
-			var F={procname:"createDom.:anonymous",prev:framePtr,filename:"path_graph.nim",line:0};
-			framePtr = F;
 				inner_231754.attr(("transform"), (d3.event.transform));
-			framePtr = F.prev;
 
 			
 		}
 
-	var F={procname:"path_graph.createDom",prev:framePtr,filename:"path_graph.nim",line:0};
-	framePtr = F;
-		F.line = 24;
 		var questions_json_231077 = parse_json_198257(makeNimstrLit("{\x0A\x09\"afraid\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"dont-be-afraid\",\x0A\x09\x09\x09\x09\"response\": \"I\'m afraid I might want to kill you\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"dont-be-afraid\",\x0A\x09\x09\x09\x09\"response\": \"It\'s just scaring me\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What are you afraid of?\"\x0A\x09},\x0A\x09\"almost-lost\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"remorse\",\x0A\x09\x09\x09\x09\"response\": \"Hey, I\'m sorry\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"lost\",\x0A\x09\x09\x09\x09\"response\": \"F* you!\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Alright. No game. Okay.\"\x0A\x09},\x0A\x09\"am-right\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"want-to-play\",\x0A\x09\x09\x09\x09\"response\": \"So.. are we playing the game?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Yes, thank you\"\x0A\x09},\x0A\x09\"anhedonia\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"happy-game\",\x0A\x09\x09\x09\x09\"response\": \"Okay...\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"reject-playing\",\x0A\x09\x09\x09\x09\"response\": \"No, I\'m not playing!\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Please, press \\\"Okay\\\" to play the game.\"\x0A\x09},\x0A\x09\"another-game\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"sad-game\",\x0A\x09\x09\x09\x09\"response\": \"Okay, let\'s play another game\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"sad-game-desc\",\x0A\x09\x09\x09\x09\"response\": \"What\'s another game?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"How about another game?\"\x0A\x09},\x0A\x09\"black-door1\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door2\",\x0A\x09\x09\x09\x09\"response\": \"Silence, my brother\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door2\",\x0A\x09\x09\x09\x09\"response\": \"K-pop?\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door2\",\x0A\x09\x09\x09\x09\"response\": \"Maybe classical music?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What is the music of life?\"\x0A\x09},\x0A\x09\"black-door2\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door3\",\x0A\x09\x09\x09\x09\"response\": \"Solace, my brother\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door3\",\x0A\x09\x09\x09\x09\"response\": \"Wait, what?\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door3\",\x0A\x09\x09\x09\x09\"response\": \"I don\'t like it\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What is the gift of death?\"\x0A\x09},\x0A\x09\"black-door3\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door4\",\x0A\x09\x09\x09\x09\"response\": \"Sanguine, my broher\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door4\",\x0A\x09\x09\x09\x09\"response\": \"Like, black?\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door4\",\x0A\x09\x09\x09\x09\"response\": \"Why would you ask that?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What is the color of night?\"\x0A\x09},\x0A\x09\"black-door4\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door5\",\x0A\x09\x09\x09\x09\"response\": \"Sublime, my brother\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door5\",\x0A\x09\x09\x09\x09\"response\": \"Salty?\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door5\",\x0A\x09\x09\x09\x09\"response\": \"Spiders?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What is the flavor of fear?\"\x0A\x09},\x0A\x09\"black-door5\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"door-test-passed\",\x0A\x09\x09\x09\x09\"response\": \"Innocence, my brother\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"door-test-passed\",\x0A\x09\x09\x09\x09\"response\": \"My self-esteem?\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"door-test-passed\",\x0A\x09\x09\x09\x09\"response\": \"Our ability to control the world\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What is life\'s greatest illusion?\"\x0A\x09},\x0A\x09\"confused\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"cruelty\",\x0A\x09\x09\x09\x09\"response\": \"I\'m here to do just one thing - make sure you are dead\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"confused-more\",\x0A\x09\x09\x09\x09\"response\": \"What are you talking about?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"(just do the role-playing as we agreed) So, why are you here?\"\x0A\x09},\x0A\x09\"confused-more\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"questionable-agreeing\",\x0A\x09\x09\x09\x09\"response\": \"Oh no, no, now I remember\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"in-the-wrong-place\",\x0A\x09\x09\x09\x09\"response\": \"No! What is this?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Wait, didn\'t we talk before?\"\x0A\x09},\x0A\x09\"cruelty\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Cruelty path\"\x0A\x09},\x0A\x09\"cucumber-or-tomatoe\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"red-or-yellow\",\x0A\x09\x09\x09\x09\"response\": \"Cucumber\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"red-or-yellow\",\x0A\x09\x09\x09\x09\"response\": \"Tomatoe\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Cucumber or tomatoe?\"\x0A\x09},\x0A\x09\"daring\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"self-confident\",\x0A\x09\x09\x09\x09\"response\": \"Self-confident\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"presumptuous\",\x0A\x09\x09\x09\x09\"response\": \"Presumptuous\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Self-confident or presumptuous?\"\x0A\x09},\x0A\x09\"difference-desc\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"sad-game\",\x0A\x09\x09\x09\x09\"response\": \"I hope so, let\'s go\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"irritative-asking\",\x0A\x09\x09\x09\x09\"response\": \"Is it so hard to tell me how it is different?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"It is like.. very different, substantially different\"\x0A\x09},\x0A\x09\"disclosure\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Disclosure\"\x0A\x09},\x0A\x09\"dont-be-afraid\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"happy-game\",\x0A\x09\x09\x09\x09\"response\": \"Yes, I like games!\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"anhedonia\",\x0A\x09\x09\x09\x09\"response\": \"No, I don\'t want to play\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Don\'t be afraid. Let\'s play a game!\"\x0A\x09},\x0A\x09\"door-test-passed\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Summary of door test\"\x0A\x09},\x0A\x09\"gabriela-order\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"psycho\",\x0A\x09\x09\x09\x09\"response\": \"You are the chosen one and now is the time\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"disclosure\",\x0A\x09\x09\x09\x09\"response\": \"I just said something stupid, sorry..\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What a heck are you talking about?!\"\x0A\x09},\x0A\x09\"haggler\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"disclosure\",\x0A\x09\x09\x09\x09\"response\": \"I\'m so sorry...\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"You are pathetic.\"\x0A\x09},\x0A\x09\"happy-game\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Happy game!\"\x0A\x09},\x0A\x09\"in-the-wrong-place\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"negotiating\",\x0A\x09\x09\x09\x09\"response\": \"Hey, wait, let\'s talk!\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"gabriela-order\",\x0A\x09\x09\x09\x09\"response\": \"I was sent by the holy order of Gabriela\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"You are not supposed to be here\"\x0A\x09},\x0A\x09\"irritative-asking\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"am-right\",\x0A\x09\x09\x09\x09\"response\": \"You are right\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"almost-lost\",\x0A\x09\x09\x09\x09\"response\": \"This is because you didn\'t tell me\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"You don\'t even know a thing about the first game\"\x0A\x09},\x0A\x09\"killing\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"cruelty\",\x0A\x09\x09\x09\x09\"response\": \"Real bad\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"pretending\",\x0A\x09\x09\x09\x09\"response\": \"Ha-ha, I was just joking\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"How bad do you want to kill me?\"\x0A\x09},\x0A\x09\"lost\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"welcome\",\x0A\x09\x09\x09\x09\"response\": \"Play again\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"You have lost the game\"\x0A\x09},\x0A\x09\"negotiating\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"haggler\",\x0A\x09\x09\x09\x09\"response\": \"I have money, kitchen silver!..\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"occult-offering\",\x0A\x09\x09\x09\x09\"response\": \"I shall give you my soul and body\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"And what do you have to offer?\"\x0A\x09},\x0A\x09\"occult-offering\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Write down your name to complete the ritual\"\x0A\x09},\x0A\x09\"presumptuous\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"cucumber-or-tomatoe\",\x0A\x09\x09\x09\x09\"response\": \"Self-critical\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"self-pitying\",\x0A\x09\x09\x09\x09\"response\": \"Self-pitying\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Self-critical or self-pitying?\"\x0A\x09},\x0A\x09\"pretending\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"pussy\",\x0A\x09\x09\x09\x09\"response\": \"Yes\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"cruelty\",\x0A\x09\x09\x09\x09\"response\": \"No, actually I want to kill you\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Were you really joking?\"\x0A\x09},\x0A\x09\"psycho\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"lost\",\x0A\x09\x09\x09\x09\"response\": \"HAHAHAHAHAHA\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"You are a freaking psycho, go away\"\x0A\x09},\x0A\x09\"pussy\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"confused\",\x0A\x09\x09\x09\x09\"response\": \"What?..\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"daring\",\x0A\x09\x09\x09\x09\"response\": \"No, I can kill you!\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"You are weak. You are not able to do what is needed.\"\x0A\x09},\x0A\x09\"questionable-agreeing\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"subterfuge\",\x0A\x09\x09\x09\x09\"response\": \"Oh no, I\'m not lying\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"regret\",\x0A\x09\x09\x09\x09\"response\": \"Yes, I shouldn\'t have..\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"I think you are lying!\"\x0A\x09},\x0A\x09\"red-or-yellow\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"silly-test-passed\",\x0A\x09\x09\x09\x09\"response\": \"Red\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"silly-test-passed\",\x0A\x09\x09\x09\x09\"response\": \"Yellow\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Red or yellow?\"\x0A\x09},\x0A\x09\"regret\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door1\",\x0A\x09\x09\x09\x09\"response\": \"Okay, ask!\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"black-door1\",\x0A\x09\x09\x09\x09\"response\": \"Whatever\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Correct. Now. If you want to stay, answer my questions.\"\x0A\x09},\x0A\x09\"reject-playing\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"happy-game\",\x0A\x09\x09\x09\x09\"response\": \"Okay, let me play your game\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"almost-lost\",\x0A\x09\x09\x09\x09\"response\": \"I don\'t care!\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"If you don\'t choose to play, you will lose now.\"\x0A\x09},\x0A\x09\"remorse\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"happy-game\",\x0A\x09\x09\x09\x09\"response\": \"Yes, let\'s play\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"another-game\",\x0A\x09\x09\x09\x09\"response\": \"I still don\'t want to play\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"So are we playing the game?\"\x0A\x09},\x0A\x09\"sad-game\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Sad game\"\x0A\x09},\x0A\x09\"sad-game-desc\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"sad-game\",\x0A\x09\x09\x09\x09\"response\": \"Alright, alright, let\'s play\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"difference-desc\",\x0A\x09\x09\x09\x09\"response\": \"And how is it different?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"It is a game that is different from the first\"\x0A\x09},\x0A\x09\"self-confident\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"killing\",\x0A\x09\x09\x09\x09\"response\": \"I\'m here to kill you\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"afraid\",\x0A\x09\x09\x09\x09\"response\": \"I\'m afraid\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Hmmm, I see. So let me ask again. What is your purpose?\"\x0A\x09},\x0A\x09\"self-pitying\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"welcome-repeat\",\x0A\x09\x09\x09\x09\"response\": \"Fine, thanks..\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"therapy\",\x0A\x09\x09\x09\x09\"response\": \"I will never be like others!\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Oh come on, you are just fine!\"\x0A\x09},\x0A\x09\"silly-test-passed\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"what-now\",\x0A\x09\x09\x09\x09\"response\": \"So, what\'s now?\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"what-now\",\x0A\x09\x09\x09\x09\"response\": \"Do I get a cookie?\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Congratulations. All questions were answered correctly.\"\x0A\x09},\x0A\x09\"subterfuge\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Do something to determine success\"\x0A\x09},\x0A\x09\"therapy\": {\x0A\x09\x09\"choices\": [],\x0A\x09\x09\"title\": \"Therapy path\"\x0A\x09},\x0A\x09\"want-to-play\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"happy-game\",\x0A\x09\x09\x09\x09\"response\": \"The first game\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"sad-game\",\x0A\x09\x09\x09\x09\"response\": \"The second one\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Oh, this is so great! Which game do you want to play?\"\x0A\x09},\x0A\x09\"welcome\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"killing\",\x0A\x09\x09\x09\x09\"response\": \"I\'m here to kill you\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"afraid\",\x0A\x09\x09\x09\x09\"response\": \"I\'m afraid\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"What is your purpose?\"\x0A\x09},\x0A\x09\"welcome-repeat\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"killing\",\x0A\x09\x09\x09\x09\"response\": \"I\'m here to kill you\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"afraid\",\x0A\x09\x09\x09\x09\"response\": \"I\'m afraid\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"So what is your purpose?\"\x0A\x09},\x0A\x09\"what-now\": {\x0A\x09\x09\"choices\": [\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"happy-game\",\x0A\x09\x09\x09\x09\"response\": \"Yes, I do!\"\x0A\x09\x09\x09},\x0A\x09\x09\x09{\x0A\x09\x09\x09\x09\"path\": \"reject-playing\",\x0A\x09\x09\x09\x09\"response\": \"Not really..\"\x0A\x09\x09\x09}\x0A\x09\x09],\x0A\x09\x09\"title\": \"Now we play the game. Do you like games?\"\x0A\x09}\x0A}\x0A"));
-		F.line = 25;
 		var g_231171 = (new dagreD3.graphlib.Graph()).setGraph(({})).setDefaultEdgeLabel((HEX3Aanonymous_231111));
 		L1: do {
-			F.line = 28;
 			var name_231173 = null;
-			F.line = 28;
 			var obj_231174 = null;
 			if (!((questions_json_231077.kind == 5))) {
-			F.line = 778;
-			failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(778, 10) `node.kind == JObject` "));
+			failed_assert_impl_15051(makeNimstrLit("json.nim(778, 10) `node.kind == JObject` "));
 			}
 			
 			L2: do {
-				F.line = 779;
 				var key_232037 = null;
-				F.line = 779;
 				var val_232038 = null;
-				F.line = 1619;
 				var colontmp__232039 = {data: null, counter: 0, first: 0, last: 0};
-				F.line = 779;
 				var Tmp3 = questions_json_231077;
 				if (ConstSet4[Tmp3.kind]===undefined) { raiseFieldError(makeNimstrLit("fields")); }
 				nimCopy(colontmp__232039, Tmp3.fields, NTI179228);
-				F.line = 1645;
 				var l_232040 = len_186765(colontmp__232039);
 				if ((0 < colontmp__232039.counter)) {
-				F.line = 1257;
 				var h_232041 = colontmp__232039.first;
 				L4: do {
-					F.line = 1258;
 						L5: while (true) {
 						if (!(0 <= h_232041)) break L5;
-							F.line = 1259;
 							var nxt_232043 = colontmp__232039.data[chckIndx(h_232041, 0, colontmp__232039.data.length+0-1)-0].Field1;
 							if (is_filled_163418(colontmp__232039.data[chckIndx(h_232041, 0, colontmp__232039.data.length+0-1)-0].Field0)) {
-							F.line = 779;
 							key_232037 = colontmp__232039.data[chckIndx(h_232041, 0, colontmp__232039.data.length+0-1)-0].Field2;
-							F.line = 1647;
 							val_232038 = colontmp__232039.data[chckIndx(h_232041, 0, colontmp__232039.data.length+0-1)-0].Field3;
-							F.line = 28;
 							name_231173 = key_232037;
-							F.line = 780;
 							obj_231174 = val_232038;
 							g_231171.setNode((toJSStr(name_231173)), (inner_231186()));
 							L6: do {
-								F.line = 30;
 								var choice_231638 = null;
-								F.line = 763;
 								var colontmp__232016 = null;
-								F.line = 30;
 								colontmp__232016 = HEX5BHEX5D_189639(obj_231174, makeNimstrLit("choices"));
 								if (!((colontmp__232016.kind == 6))) {
-								F.line = 765;
-								failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/json.nim(765, 10) `node.kind == JArray` "));
+								failed_assert_impl_15051(makeNimstrLit("json.nim(765, 10) `node.kind == JArray` "));
 								}
 								
 								L7: do {
-									F.line = 766;
 									var i_232024 = null;
-									F.line = 183;
 									var colontmp__232025 = null;
-									F.line = 766;
 									var Tmp8 = colontmp__232016;
 									if (ConstSet6[Tmp8.kind]===undefined) { raiseFieldError(makeNimstrLit("elems")); }
 									colontmp__232025 = Tmp8.elems;
-									F.line = 185;
 									var i_232026 = 0;
-									F.line = 186;
 									var l_232027 = (colontmp__232025 != null ? colontmp__232025.length : 0);
 									L9: do {
-										F.line = 187;
 											L10: while (true) {
 											if (!(i_232026 < l_232027)) break L10;
-												F.line = 766;
 												i_232024 = colontmp__232025[chckIndx(i_232026, 0, colontmp__232025.length+0-1)-0];
-												F.line = 30;
 												choice_231638 = i_232024;
 												g_231171.setEdge((toJSStr(name_231173)), (toJSStr(get_str_179671(HEX5BHEX5D_189639(choice_231638, makeNimstrLit("path")), []))));
-												F.line = 189;
 												i_232026 = addInt(i_232026, 1);
 												if (!(((colontmp__232025 != null ? colontmp__232025.length : 0) == l_232027))) {
-												F.line = 190;
-												failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/system/iterators.nim(190, 11) `len(a) == L` the length of the seq changed while iterating over it"));
+												failed_assert_impl_15051(makeNimstrLit("iterators.nim(190, 11) `len(a) == L` the length of the seq changed while iterating over it"));
 												}
 												
 											}
@@ -1733,13 +1318,11 @@ function create_dom_231075() {
 								} while(false);
 							} while(false);
 							if (!((len_186765(colontmp__232039) == l_232040))) {
-							F.line = 1648;
-							failed_assert_impl_15051(makeNimstrLit("/home/grfork/.choosenim/toolchains/nim-0.20.2/lib/pure/collections/tables.nim(1648, 11) `len(t) ==\x0A    L` the length of the table changed while iterating over it"));
+							failed_assert_impl_15051(makeNimstrLit("tables.nim(1648, 11) `len(t) ==\x0A    L` the length of the table changed while iterating over it"));
 							}
 							
 							}
 							
-							F.line = 1262;
 							h_232041 = nxt_232043;
 						}
 				} while(false);
@@ -1748,59 +1331,37 @@ function create_dom_231075() {
 			} while(false);
 		} while(false);
 		L11: do {
-			F.line = 32;
 			var node_231661 = null;
-			F.line = 359;
 			var colontmp__232046 = null;
-			F.line = 32;
 			colontmp__232046 = g_231171.nodes();
-			F.line = 361;
 			var v_232047 = null;
-			F.line = 362;
 			for (var k in colontmp__232046) {
-			F.line = 363;
 			  if (!colontmp__232046.hasOwnProperty(k)) continue;
-			F.line = 364;
 			  v_232047=colontmp__232046[k];
-			F.line = 32;
 			node_231661 = v_232047;
 			if ((g_231171.isLeaf((node_231661)))) {
-			F.line = 33;
 			g_231171.node((node_231661)).style = "fill: red";
 			}
 			
-			F.line = 366;
 			}
 		} while(false);
-		F.line = 36;
 		var d3render_231721 = ((new dagreD3.render()));
-		F.line = 37;
 		var svg_231732 = d3.select(("svg"));
-		F.line = 38;
 		var svg_group_231743 = svg_231732.append(("g"));
-		F.line = 39;
 		var inner_231754 = svg_231732.select(("g"));
-		F.line = 40;
 		var zoom_231813 = d3.zoom().on(("zoom"), (HEX3Aanonymous_231762));
 		svg_231732.call((zoom_231813));
-		F.line = 43;
 		d3render_231721(inner_231754, g_231171);
 		console.log((g_231171));
-		F.line = 47;
 		var initial_scale_231838 = (5.9999999999999998e-01);
 		svg_231732.call((zoom_231813.transform), (d3.zoomIdentity.translate((((svg_231732.attr(("width")) - (g_231171.graph().width * initial_scale_231838)) / (2))), ((20))).scale((initial_scale_231838))));
 		svg_231732.attr(("height"), (((g_231171.graph().height * initial_scale_231838) + (40))));
-	framePtr = F.prev;
 
 	
 }
 
 function main_231957() {
-	var F={procname:"path_graph.main",prev:framePtr,filename:"path_graph.nim",line:0};
-	framePtr = F;
-		F.line = 58;
 		create_dom_231075();
-	framePtr = F.prev;
 
 	
 }

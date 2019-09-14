@@ -22,12 +22,12 @@ task pathgraph, "Draw a map of all the questions":
     mvFile "path_graph.js", "../../js/path_graph.js"
 
 task pages, "Build github pages":
-  exec "nimble build"
-  exec "nimble pathgraph"
+  exec "nim js -d:release src/undarkness.nim"
+  exec "nim js -d:release src/tools/path_graph.nim"
   cpFile "templates/index.html", "docs/index.html"
   cpFile "templates/path_graph.html", "docs/path_graph.html"
-  cpFile "js/undarkness.js", "docs/undarkness.js"
-  cpFile "js/path_graph.js", "docs/path_graph.js"
+  mvFile "src/undarkness.js", "docs/undarkness.js"
+  mvFile "src/tools/path_graph.js", "docs/path_graph.js"
   cpFile "css/styles.css", "docs/styles.css"
   exec """nimgrep -r "\.\./js" "." docs/index.html"""
   exec """nimgrep -r "\.\./css" "." docs/index.html"""
