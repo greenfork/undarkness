@@ -16,6 +16,7 @@ var
 type
   NodeProps = ref object
     label, class: cstring
+    rx, ry: int
   EdgeProps = ref object
     label, class: cstring
 
@@ -25,14 +26,9 @@ proc createDom() =
     .setDefaultEdgeLabel(proc():auto = JsObject{})
 
   for name, obj in questionsJson.pairs:
-    g.setNode(name, NodeProps{label: name})
+    g.setNode(name, NodeProps{label: name, rx: 5, ry: 5})
     for choice in items(obj["choices"]):
       g.setEdge(name, choice["path"].getStr())
-
-  for node in g.nodes():
-    var node = g.node(node)
-    node.rx = 5
-    node.ry = 5
 
   var
     d3Render = jsNew(dagreD3.render()).to(proc(a, b: auto))
